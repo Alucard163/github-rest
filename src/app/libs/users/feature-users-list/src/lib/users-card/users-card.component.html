@@ -1,0 +1,22 @@
+<a
+  class="card shadow-sm"
+  [routerLink]="['/detail', user?.id]"
+>
+  <img
+    class="bd-placeholder-img card-img-top"
+    width="100%"
+    height="225"
+    role="img"
+    aria-label="Placeholder: Thumbnail"
+    preserveAspectRatio="xMidYMid slice"
+    focusable="false"
+    [src]="user?.avatar_url ? user?.avatar_url : ''"
+  />
+  <div class="card-body">
+    <p class="card-text">{{ user?.name }}</p>
+    <div class="d-flex flex-column justify-content-between align-items-center">
+      <p class="text-body-secondary w-100">Login: <b>{{ user?.login }}</b></p>
+      <p class="text-body-secondary w-100">Type: <b>{{ user?.type }}</b></p>
+    </div>
+  </div>
+</a>

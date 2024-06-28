@@ -1,0 +1,13 @@
+<ng-container
+  *ngrxLet="{
+    users: users$,
+    status: status$,
+    errors: errors$,
+  } as vm"
+>
+  <lib-users-filter />
+  <lib-users-list
+    *ngIf="vm"
+    [vm]="vm"
+  />
+</ng-container>

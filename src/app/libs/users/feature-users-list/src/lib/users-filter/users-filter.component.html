@@ -1,0 +1,20 @@
+<form
+  class="d-flex justify-content-between form-group my-2"
+  [formGroup]="formData"
+  (ngSubmit)="onFilterUsers()"
+>
+  <input
+    type="text"
+    class="form-control me-2"
+    placeholder="Введите имя пользователя"
+    formControlName="name"
+    aria-label="Search"
+    (input)="onFilterUsers()"
+  >
+  <button
+    class="btn btn-outline-success"
+    type="submit"
+    [disabled]="formData.invalid"
+  >Search
+  </button>
+</form>

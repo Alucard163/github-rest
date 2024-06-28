@@ -1,0 +1,16 @@
+<table class="table" *ngIf="!!users?.length">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Имя</th>
+    <th scope="col">Ссылка</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users; let i = index">
+    <th scope="row">{{i+1}}</th>
+    <td>{{user.login}}</td>
+    <td><a [routerLink]="['/detail', user.id]">Подробнее</a></td>
+  </tr>
+  </tbody>
+</table>

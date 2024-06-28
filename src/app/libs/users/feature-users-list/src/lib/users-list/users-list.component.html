@@ -1,0 +1,45 @@
+<ng-container *ngIf="vm.status === 'init'">
+  <div class="ml-2" role="alert">
+    Введите имя пользователя в поиск
+  </div>
+</ng-container>
+
+<ng-container *ngIf="vm.status === 'loading'; else loadingResult">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loadingResult>
+  <ng-container *ngIf="vm.status === 'loaded' && hasUsers; else notFound">
+    <div class="container">
+      <div class="row">
+        <ng-container *ngIf="currentComponent === 'block'; else table">
+          <div class="col-md-4 mb-3" *ngFor="let user of vm.users">
+            <lib-users-card [user]="user" />
+          </div>
+        </ng-container>
+
+        <ng-template #table>
+          <lib-users-table [users]="vm.users" />
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #notFound>
+  <ng-container *ngIf="vm.status === 'loaded' && !hasUsers; else error">
+    <p>Ничего не найдено. Попробуйте еще раз</p>
+  </ng-container>
+</ng-template>
+
+<ng-template #error>
+  <ng-container *ngIf="vm.status === 'error'">
+    <div class="alert alert-danger" role="alert">
+      {{ vm.errors?.message }}
+    </div>
+  </ng-container>
+</ng-template>

@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@github-rest/feature-users-detail": [
+        "src/app/libs/users/feature-users-detail/src/index.ts"
+      ],
+      "@github-rest/feature-users-list": [
+        "src/app/libs/users/feature-users-list/src/index.ts"
+      ],
+      "@github-rest/footer": ["src/app/core/ui/layout/footer/src/index.ts"],
+      "@github-rest/github-api": ["src/app/core/github-api/src/index.ts"],
+      "@github-rest/header": ["src/app/core/ui/layout/header/src/index.ts"],
+      "@github-rest/http": ["src/app/core/http/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
