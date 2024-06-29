@@ -21,7 +21,7 @@ export class UsersListContainerStore extends ComponentStore<UsersListState> {
 
   constructor() {
     super(initialState);
-    // this.usersFacade.init();
+    this.usersFacade.cleanUsers();
     this.setUsers();
   }
 
@@ -31,7 +31,7 @@ export class UsersListContainerStore extends ComponentStore<UsersListState> {
 
   private patchUsers(users: GithubUser[] | undefined) {
     this.patchState({
-      users: [],
+      users,
     })
   }
 }
