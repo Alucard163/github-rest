@@ -8,14 +8,16 @@ export const githubApiFeatureKey = 'githubApi';
 
 export type LoadingStatus = 'init' | 'loading' | 'loaded' | 'error';
 
-export interface GithubApiState {
+export interface GithubApiState extends EntityState<GithubApiState>{
   error: Error | null;
   users: GithubUsersDTO | null;
   user: GithubUser | null;
   status: LoadingStatus;
 }
 
-export const githubApiInitialState: GithubApiState = {
+export const githubUsersAdapter: EntityAdapter<GithubApiState> = createEntityAdapter();
+
+export const githubApiInitialState: GithubApiState = githubUsersAdapter.getInitialState({
   error: null,
   users: {
     total_count: 0,
@@ -24,7 +26,7 @@ export const githubApiInitialState: GithubApiState = {
   },
   user: null,
   status: 'init',
-};
+});
 
 export const githubApiFeature = createFeature({
   name: githubApiFeatureKey,
