@@ -9,4 +9,3 @@ export * from './lib/github-api/services/session-storage.service';
 
 export * from './lib/github-api/models/github-user.model';
 export * from './lib/github-api/models/github-users-DTO.model';
-export * from './lib/github-api/models/user.model';

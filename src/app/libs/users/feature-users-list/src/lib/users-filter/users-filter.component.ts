@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { HttpParams } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { GithubApiFacade } from '@github-rest/github-api';
 import { PER_PAGE } from '@github-rest/http';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'lib-users-filter',
@@ -17,7 +17,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UsersFilterComponent {
   private perPage = inject(PER_PAGE);
-  private store = inject(Store);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private location = inject(Location);

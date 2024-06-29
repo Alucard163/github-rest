@@ -1,36 +1,25 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  inject,
-  OnInit,
+  Input,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import {  RouterLink } from '@angular/router';
 
-import {
-  GithubApiFacade,
-  GithubUser,
-} from '@github-rest/github-api';
-
-import { Observable } from 'rxjs';
 import { PushPipe } from '@ngrx/component';
+import { FeatureUserDetailsVm } from './feature-user-details-vm';
+import { UsersDetailContainerStore } from '../users-detail-container/users-detail-container-store';
 
 @Component({
   selector: 'lib-feature-users-detail',
   standalone: true,
   imports: [CommonModule, RouterLink, PushPipe],
+  providers: [UsersDetailContainerStore],
   templateUrl: './feature-users-detail.component.html',
   styleUrl: './feature-users-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeatureUsersDetailComponent implements OnInit {
-  private githubApiFacade = inject(GithubApiFacade);
-  private route = inject(ActivatedRoute);
-  public pageId = this.route.snapshot.params['id'];
-  public user$!: Observable<GithubUser | null>;
-
-  ngOnInit(): void {
-    this.githubApiFacade.getUserById(this.pageId);
-    this.user$ = this.githubApiFacade.user$;
-  }
+export class FeatureUsersDetailComponent {
+  @Input({ required: true })
+  vm!: FeatureUserDetailsVm;
 }

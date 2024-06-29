@@ -1,23 +1,36 @@
-<div *ngIf="user$ | ngrxPush as user; else error" class="container">
-  <h3 class="h-3 my-2">User Info</h3>
-  <div class="user d-flex p-3 flex-lg-row flex-column">
-    <div class="user__img m-1">
-      <a href="{{ user.id }}">
-        <img
-          [src]="user.avatar_url"
-          width="auto"
-          height="auto"
-          alt="avatar"
-        >
-      </a>
+<ng-container *ngIf="vm.status === 'loading'; else loadingResult">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border m-5" role="status">
+      <span class="sr-only"></span>
     </div>
-    <ul class="user__name list-group flex-fill m-1">
-      <li class="list-group-item"><b>Login</b>: {{ user.login }}</li>
-      <li class="list-group-item"><b>Type</b>: {{ user.type }}</li>
-      <li class="list-group-item"><b>Link to</b>: <a href="{{ user.html_url }}">Profile</a></li>
-    </ul>
   </div>
-</div>
+</ng-container>
+
+<ng-template #loadingResult>
+  <ng-container  *ngIf="vm && vm.user | ngrxPush as user; else error">
+    <div class="container">
+      <h3 class="h-3 my-2">User Info</h3>
+      <div class="user d-flex p-3 flex-lg-row flex-column">
+        <div class="user__img m-1">
+          <a href="{{ user.id }}">
+            <img
+              [src]="user.avatar_url"
+              width="auto"
+              height="auto"
+              alt="avatar"
+            >
+          </a>
+        </div>
+        <ul class="user__name list-group flex-fill m-1">
+          <li class="list-group-item"><b>Login</b>: {{ user.login }}</li>
+          <li class="list-group-item"><b>Type</b>: {{ user.type }}</li>
+          <li class="list-group-item"><b>Link to</b>: <a href="{{ user.html_url }}">Profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>
+
 <ng-template #error>
   <p>Ничего не найдено...</p>
 </ng-template>

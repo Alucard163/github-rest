@@ -9,7 +9,7 @@ export const appRoutes: Route[] = [
         component: AuthorizedUserLayoutComponent,
         children: [
             { path: 'table',  loadComponent: () => import('@github-rest/feature-users-list').then((c) => c.UsersListContainerComponent)},
-            { path: 'detail/:id', loadComponent: () => import('@github-rest/feature-users-detail').then((c) => c.FeatureUsersDetailComponent)},
+            { path: 'detail/:id', loadComponent: () => import('@github-rest/feature-users-detail').then((c) => c.UsersDetailContainerComponent)},
             { path: 'blocks', loadComponent: () => import('@github-rest/feature-users-list').then((c) => c.UsersListContainerComponent)}
         ]
     },

@@ -1,0 +1,12 @@
+<ng-container
+  *ngrxLet="{
+    user: user$,
+    status: status$,
+    errors: errors$
+  } as vm"
+>
+  <lib-feature-users-detail
+    *ngIf="vm && vm.user"
+    [vm]="vm"
+  />
+</ng-container>
